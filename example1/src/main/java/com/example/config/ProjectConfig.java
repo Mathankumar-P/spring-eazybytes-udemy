@@ -14,7 +14,7 @@ public class ProjectConfig {
     }
     @Bean
     String hell(){
-        return "Hello World";
+        return "Hello World ";
     }
 
     @Bean
