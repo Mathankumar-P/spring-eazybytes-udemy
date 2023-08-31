@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Person {
     @Autowired
+    
     public Person(Vehicle vehicle){
         System.out.println("Person Instance is Created");
         this.vehicle = vehicle;
