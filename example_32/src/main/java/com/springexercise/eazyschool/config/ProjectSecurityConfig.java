@@ -2,6 +2,7 @@ package com.springexercise.eazyschool.config;
 
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,6 +15,7 @@ import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 @Configuration
+@ComponentScan
 public class ProjectSecurityConfig {
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
@@ -49,14 +51,19 @@ public class ProjectSecurityConfig {
 
     }
 
+
     @Bean
-    public InMemoryUserDetailsManager userDetailsManager (){
-        UserDetails admin = User.withDefaultPasswordEncoder().
-                username("admin").password("12345").roles("admin").build();
-        UserDetails user1 = User.withDefaultPasswordEncoder().username("user1")
-                .password("12345").roles("user").build();
-        UserDetails user2 = User.withDefaultPasswordEncoder().username("user2")
-                .password("12345").roles("user").build();
-        return new InMemoryUserDetailsManager(admin,user1,user2);
+    public InMemoryUserDetailsManager userDetailsService() {
+        UserDetails user = User.withDefaultPasswordEncoder()
+                .username("user")
+                .password("12345")
+                .roles("USER")
+                .build();
+        UserDetails admin = User.withDefaultPasswordEncoder()
+                .username("admin")
+                .password("54321")
+                .roles("ADMIN")
+                .build();
+        return new InMemoryUserDetailsManager(user, admin);
     }
 }
