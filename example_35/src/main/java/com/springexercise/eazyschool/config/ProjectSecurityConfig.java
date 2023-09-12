@@ -31,6 +31,7 @@ public class ProjectSecurityConfig {
                         .requestMatchers("/about").permitAll()
                         .requestMatchers("/assets/**").permitAll()
                         .requestMatchers("/login").permitAll()
+                        .requestMatchers("/error").permitAll()
                         .requestMatchers("/logout").permitAll())
                 .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
                         .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll())
