@@ -5,6 +5,7 @@ import com.springexercise.eazyschool.annotation.PasswordValidator;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.GenericGenerator;
 
 @Data
@@ -46,4 +47,10 @@ public class Person extends BaseEntry {
     @Transient
     private String confirmPwd;
 
+    @OneToOne(fetch=FetchType.EAGER,cascade = CascadeType.PERSIST,targetEntity = Roles.class)
+    @JoinColumn(name="role_id",referencedColumnName = "roleId",nullable = true)
+    private Roles roles;
+    @OneToOne(fetch=FetchType.EAGER,cascade = CascadeType.ALL,targetEntity = Address.class)
+    @JoinColumn(name="address_id",referencedColumnName = "addressId",nullable = true)
+    private Address address;
 }
