@@ -25,10 +25,10 @@ public class ProjectSecurityConfig {
                     .requestMatchers("/displayProfile").authenticated()
                     .requestMatchers("/updateProfile").authenticated()
                     .requestMatchers("/student/**").hasRole("STUDENT")
-                    .requestMatchers("/profile/**").permitAll()
+                    /*.requestMatchers("/profile/**").permitAll()
                     .requestMatchers("/courseses/**").permitAll()
                     .requestMatchers("/contacts/**").permitAll()
-                     .requestMatchers("/data-api/**").permitAll()
+                     .requestMatchers("/data-api/**").permitAll()*/
                     .requestMatchers("", "/", "/home").permitAll()
                     .requestMatchers("/holidays/**").permitAll()
                     .requestMatchers("/contact").permitAll()
